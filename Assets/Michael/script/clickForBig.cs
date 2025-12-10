@@ -1,55 +1,23 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class clickForBig : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class clickForBig : MonoBehaviour
 {
     [SerializeField] private GameObject makeBigObj;
-
-    private bool isOver = false;
-
-    private bool isBig = false;
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        isOver = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isOver = false;
-    }
 
     void Start()
     {
         makeBigObj.SetActive(false);
+        makeBigObj.transform.localScale = new Vector3 (1, 1, 1);
     }
 
-    private void Update()
+    private void OnMouseOver()
     {
-        if (isOver)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (isBig == false)
-                {
-                    makeBigObj.SetActive(true);
-                    isBig = true;
-                }
-
-            }
-            
+            makeBigObj.SetActive(true);
+            makeBigObj.transform.localScale = new Vector3(1, 1, 1);
+            makeBigObj.transform.localPosition = new Vector3(0, 0, 0);
+            gameObject.SetActive(false);
         }
-        if(!isOver)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (isBig == true)
-                {
-                    makeBigObj.SetActive(false);
-                    isBig = false;
-                }
-            }
-        }
-                
     }
 }
