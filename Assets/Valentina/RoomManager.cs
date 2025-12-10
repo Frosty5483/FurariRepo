@@ -6,14 +6,10 @@ public class RoomManager : MonoBehaviour
 {
     public List<GameObject> roomlist;
     public int roomIndex = 0;
+
     void Start()
     {
         RoomUpdater();
-    }
-
-    void Update()
-    {
-        
     }
     public void Door(int a)
     {
@@ -32,14 +28,10 @@ public class RoomManager : MonoBehaviour
     }
     private void RoomUpdater()
     {
-        Debug.Log("Room updated");
         foreach (GameObject obj in roomlist)
         {
             if (roomlist.IndexOf(obj) != roomIndex) { obj.SetActive(false); }
             else { obj.SetActive(true); }
         }
-
-
     }
-
 }

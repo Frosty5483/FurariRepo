@@ -3,24 +3,31 @@ using UnityEngine;
 
 public class Friendshipbook : MonoBehaviour
 {
-    [SerializeField] GameObject book;
+    [SerializeField] private GameObject book;
+    [SerializeField] private GameObject blackScreen;
     public List<GameObject> pageList;
 
-    void Start()
-    {
-        
-    }
+    public List<GameObject> stammbaum;
+    public List<GameObject> fsbPhotos;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private bool pickedup = false;
 
+    private void Start()
+    {
+        book.SetActive(false); blackScreen.SetActive(false);
+    }
     public void OpenOrCloseFriendshipbook()
     {
-        if (book.activeSelf) book.SetActive(false);
-        else book.SetActive(true);
+        if (book.activeSelf && pickedup == true) { book.SetActive(false); blackScreen.SetActive(false); }
+        else if (pickedup == true) { book.SetActive(true); blackScreen.SetActive(true); }
+
+        Debug.Log("Pick up the Friendshipbook first!");
+    }
+
+    public void PickUpFriendshipbook()
+    {
+        Debug.Log("The Friendshipbook has been picket up!");
+        PickedUpFriendshipbook();
     }
 
     public void TurnPage()
@@ -30,10 +37,16 @@ public class Friendshipbook : MonoBehaviour
             if (page.activeSelf)
             {
                 page.SetActive(false);
-                if (pageList.IndexOf(page) != pageList.Count-1) pageList[pageList.IndexOf(page)+1].SetActive(true);
-                else pageList[0].SetActive(true);
+                if (pageList.IndexOf(page) != pageList.Count - 1) { pageList[pageList.IndexOf(page) + 1].SetActive(true); break; }
+                else { pageList[0].SetActive(true); break; }
+
             }
+            
         }
     }
 
+    private bool PickedUpFriendshipbook()
+    {
+        return pickedup = true;
+    }
 }
