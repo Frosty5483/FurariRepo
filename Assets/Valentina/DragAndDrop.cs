@@ -108,7 +108,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         ReturnFSB();
 
-        if (fsb.stammbaum != null && fsb.fsbPhotos != null)
+        if (fsb != null)
         {
             if (fsb.stammbaum.Contains(other.gameObject) && fsb.fsbPhotos.Contains(gameObject)) { ReturnInTrigger(false); }
         }

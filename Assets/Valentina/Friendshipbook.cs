@@ -4,6 +4,7 @@ using UnityEngine;
 public class Friendshipbook : MonoBehaviour
 {
     [SerializeField] private GameObject book;
+    [SerializeField] private GameObject bookbutton;
     [SerializeField] private GameObject blackScreen;
     public List<GameObject> pageList;
 
@@ -28,6 +29,7 @@ public class Friendshipbook : MonoBehaviour
     {
         Debug.Log("The Friendshipbook has been picket up!");
         PickedUpFriendshipbook();
+        Destroy(bookbutton);
     }
 
     public void TurnPage()
