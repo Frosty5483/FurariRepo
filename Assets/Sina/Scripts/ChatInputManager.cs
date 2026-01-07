@@ -45,15 +45,13 @@ public class ChatInputManager : MonoBehaviour
         if (essentialWords.Contains(message))
         {
             Instantiate(essentialAnswer, chatField.transform);
-            foundWords.Add(message);
-            essentialWords.Remove(message);
+            ListUpdate(message, essentialWords);
             Debug.Log("Essential Words: " + essentialWords.Count);
         }
         else if (extraWords.Contains(message))
         {
             Instantiate(extraAnswer, chatField.transform);
-            foundWords.Add(message);
-            extraWords.Remove(message);
+            ListUpdate(message, extraWords);
             foundExtraWordsCount++;
             Debug.Log("Extra Words: " + extraWords.Count);
             Debug.Log("Found Extra Words:" + foundExtraWordsCount);
@@ -67,6 +65,11 @@ public class ChatInputManager : MonoBehaviour
             Instantiate(wrongAnswer, chatField.transform);
 
         }
+    }
+    private void ListUpdate(string message, List<string> wordType)
+    {
+        foundWords.Add(message);
+        wordType.Remove(message);
     }
 }
 
