@@ -34,7 +34,7 @@ public class Result : MonoBehaviour
         {
             Debug.Log("bad");
             resultSlider.SetActive(false);
-            resultText.text = badScore;
+            SetResultText(badScore);
         }
         else
         {
@@ -50,20 +50,25 @@ public class Result : MonoBehaviour
 
         if (IsInRange(foundExtraPercent, 0f, 33f))
         {
-            resultText.text = okScore;
+            SetResultText(okScore);
             Debug.Log("ok");
         }
         else if (IsInRange(foundExtraPercent, 34f, 66f))
         {
-            resultText.text = goodScore;
+            SetResultText(goodScore);
             Debug.Log("good");
         }
         else if (IsInRange(foundExtraPercent, 67f, 100f))
         {
-            resultText.text = greatScore;
+            SetResultText(greatScore);
             Debug.Log("great");
         }
         
+    }
+
+    private void SetResultText(string scoreText)
+    {
+        resultText.text = scoreText;
     }
 
     private void ResultSlider()
