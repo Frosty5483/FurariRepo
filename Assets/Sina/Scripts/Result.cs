@@ -7,7 +7,6 @@ public class Result : MonoBehaviour
     [SerializeField] private ChatAttachmentManager chatAttachmentManager;
     private int extraWordsCount;
     private int essentialWordsCount;
-    private int attachmentsCount;
 
     [SerializeField] private GameObject resultUI;
     [SerializeField] private GameObject resultSlider;
