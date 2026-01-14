@@ -877,6 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 1797764356}
+  audioRec: {fileID: 1333957597}
 --- !u!1 &852856658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 2053509894}
+  audioRec: {fileID: 1333957597}
 --- !u!1 &1003664916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,7 +1195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1333957596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1235,9 +1237,17 @@ MonoBehaviour:
   animalSpr: {fileID: 23452990138164187, guid: dd4dad34dafe3564599689df8b879c46, type: 3}
   birthdaySpr: {fileID: 8977206448484910874, guid: 156793289f69ef142b75435b220b532e, type: 3}
   songrecSpr: {fileID: -7116429664734243405, guid: 28aeb8b8f7d3db34d8e664166bbfda50, type: 3}
+  stuffedAnimalObj: {fileID: 935863805}
+  birthdayCardObj: {fileID: 693948787}
+  songRecObj: {fileID: 1777474124}
   doneImag: {fileID: 2022784360}
   loadingImag: {fileID: 1453460433}
   loadingTxt: {fileID: 852856660}
+  stuffedDone: 0
+  birthdayDone: 0
+  songrecDone: 0
+  testBoolA: 0
+  testBoolB: 0
 --- !u!1 &1453460431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1474,10 @@ MonoBehaviour:
   getStuffedAnimalObj: {fileID: 935863805}
   getBirthdayCardObj: {fileID: 693948787}
   getSongRecObj: {fileID: 1777474124}
+  audioRec: {fileID: 1333957597}
+  doneImag: {fileID: 2022784360}
+  loadingImag: {fileID: 1453460433}
+  loadingTxt: {fileID: 852856660}
 --- !u!1 &1745544319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,6 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 1638856735}
+  audioRec: {fileID: 1333957597}
 --- !u!1 &1797764356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +1808,10 @@ MonoBehaviour:
   getStuffedAnimalObj: {fileID: 935863805}
   getBirthdayCardObj: {fileID: 693948787}
   getSongRecObj: {fileID: 1777474124}
+  audioRec: {fileID: 1333957597}
+  doneImag: {fileID: 2022784360}
+  loadingImag: {fileID: 1453460433}
+  loadingTxt: {fileID: 852856660}
 --- !u!1 &2022784358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2038,10 @@ MonoBehaviour:
   getStuffedAnimalObj: {fileID: 935863805}
   getBirthdayCardObj: {fileID: 693948787}
   getSongRecObj: {fileID: 1777474124}
+  audioRec: {fileID: 1333957597}
+  doneImag: {fileID: 2022784360}
+  loadingImag: {fileID: 1453460433}
+  loadingTxt: {fileID: 852856660}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

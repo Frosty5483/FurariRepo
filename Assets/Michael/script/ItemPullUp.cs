@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +10,11 @@ public class ItemPullUp : MonoBehaviour
     [SerializeField] private GameObject getStuffedAnimalObj;
     [SerializeField] private GameObject getBirthdayCardObj;
     [SerializeField] private GameObject getSongRecObj;
+
+    [SerializeField] private AudioRecManag audioRec;
+    [SerializeField] private Image doneImag;
+    [SerializeField] private Image loadingImag;
+    [SerializeField] private TMP_Text loadingTxt;
 
     private void Start()
     {
@@ -27,6 +33,10 @@ public class ItemPullUp : MonoBehaviour
 
             if(!getStuffedAnimalObj.activeInHierarchy && !getBirthdayCardObj.activeInHierarchy && !getSongRecObj.activeInHierarchy)
             {
+                doneImag.sprite = null;
+                loadingTxt.text = null;
+                loadingImag.fillAmount = 0;
+                audioRec.testBoolB = false;
                 bigImag.gameObject.SetActive(true);
                 bigImag.gameObject.GetComponent<BigItem>().whenShown();
                 gameObject.SetActive(false);

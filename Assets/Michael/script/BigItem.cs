@@ -7,6 +7,7 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private bool isOver = false;
 
     [SerializeField] private GameObject item;
+    [SerializeField] private AudioRecManag audioRec;
 
     private bool shouldStart = false;
 
@@ -30,6 +31,7 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 {
                     shouldStart = false;
                     item.SetActive(true);
+                    audioRec.testBoolB = false;
                     gameObject.SetActive(false);
                 }
             }
@@ -39,6 +41,7 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             shouldStart = false;
             item.SetActive(true);
+            audioRec.testBoolB = false;
             gameObject.SetActive(false);
         }
     }
