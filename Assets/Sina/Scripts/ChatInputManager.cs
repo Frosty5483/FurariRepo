@@ -21,6 +21,7 @@ public class ChatInputManager : MonoBehaviour
     [SerializeField] private GameObject foundAnswer;
 
     public int foundExtraWordsCount = 0;
+    private float responseTime = 0.7f;
 
     private void Start()
     {
@@ -41,19 +42,17 @@ public class ChatInputManager : MonoBehaviour
 
     private IEnumerator CheckMessage(string message)
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(responseTime);
         if (essentialWords.Contains(message))
         {
             Instantiate(essentialAnswer, chatField.transform);
-            foundWords.Add(message);
-            essentialWords.Remove(message);
+            ListUpdate(message, essentialWords);
             Debug.Log("Essential Words: " + essentialWords.Count);
         }
         else if (extraWords.Contains(message))
         {
             Instantiate(extraAnswer, chatField.transform);
-            foundWords.Add(message);
-            extraWords.Remove(message);
+            ListUpdate(message, extraWords);
             foundExtraWordsCount++;
             Debug.Log("Extra Words: " + extraWords.Count);
             Debug.Log("Found Extra Words:" + foundExtraWordsCount);
@@ -67,6 +66,11 @@ public class ChatInputManager : MonoBehaviour
             Instantiate(wrongAnswer, chatField.transform);
 
         }
+    }
+    private void ListUpdate(string message, List<string> wordType)
+    {
+        foundWords.Add(message);
+        wordType.Remove(message);
     }
 }
 

@@ -15,28 +15,38 @@ public class AudioRecManag : MonoBehaviour
     [SerializeField] private Sprite birthdaySpr;
     [SerializeField] private Sprite songrecSpr;
 
+    [Header("AudioRecObjs")]
+    [SerializeField] private GameObject stuffedAnimalObj;
+    [SerializeField] private GameObject birthdayCardObj;
+    [SerializeField] private GameObject songRecObj;
+
     [Header("Other")]
     [SerializeField] private Image doneImag;
     [SerializeField] private Image loadingImag;
     [SerializeField] private TMP_Text loadingTxt;
 
-    private bool stuffedDone;
-    private bool birthdayDone;
-    private bool songrecDone;
+    [Header("bools")]
+    [SerializeField] private bool stuffedDone;
+    [SerializeField] private bool birthdayDone;
+    [SerializeField] private bool songrecDone;
+
+    public bool testBoolA;
+    public bool testBoolB;
 
     private void Update()
     {
-        if (GameObject.FindGameObjectWithTag("StuffedAnimal").activeInHierarchy)
+        if (stuffedAnimalObj.activeInHierarchy)
         {
+            
             RecordingAudio(animal_Clip, stuffedDone, animalSpr);
         }
 
-        if (GameObject.FindGameObjectWithTag("BirthdayCard").activeInHierarchy)
+        if (birthdayCardObj.activeInHierarchy)
         {
             RecordingAudio(birthday_Clip, birthdayDone, birthdaySpr);
         }
 
-        if (GameObject.FindGameObjectWithTag("SongRec").activeInHierarchy)
+        if (songRecObj.activeInHierarchy)
         {
             RecordingAudio(songrec_Clip, songrecDone, songrecSpr);
         }
@@ -44,12 +54,26 @@ public class AudioRecManag : MonoBehaviour
 
     void RecordingAudio(AudioClip audioClip, bool isRecorded, Sprite doneSpr)
     {
-        StartCoroutine(LoadingAudio());
-
+        if (testBoolA == false && testBoolB == false)
+        {
+            StartCoroutine(LoadingAudio());
+            testBoolA = true;
+        }
+        
         if(loadingImag.fillAmount == 1)
         {
+            Debug.Log("sprite");
             isRecorded = true;
             doneImag.sprite = doneSpr;
+            loadingTxt.text = "Done!";
+            testBoolB = true;
+            testBoolA = false;
+            if(stuffedAnimalObj.activeInHierarchy)
+                stuffedDone = true;
+            if(birthdayCardObj.activeInHierarchy)
+                birthdayDone = true;
+            if(songRecObj.activeInHierarchy)
+                songrecDone = true;
         }
     }
 
@@ -58,8 +82,16 @@ public class AudioRecManag : MonoBehaviour
         loadingTxt.text = "Loading...";
         for (int i = 0; i <= 100; i++)
         {
-            loadingImag.fillAmount = i / 100;
+            loadingImag.fillAmount += 0.01f;
+            Debug.Log("Loading" + i + "fill: " + loadingImag.fillAmount);
             yield return new WaitForSeconds(0.1f);
+            if(!stuffedAnimalObj.activeInHierarchy && !birthdayCardObj.activeInHierarchy && !songRecObj.activeInHierarchy)
+            {
+                i = 0;
+                loadingImag.fillAmount = 0;
+                testBoolA = false;
+                StopAllCoroutines();
+            }
         }
     }
 }
