@@ -1,52 +1,49 @@
-using System.Runtime.CompilerServices;
-using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
+
 
 public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform rectTransform;
     private bool dragging;
 
-    private Vector3 orgPosition, orgorgPosition;
-    private Transform orgParent, FSBParent;
+    private Vector3 orgPosition, fsbposition;
+    private Transform FSBParent, StammbaumFieldParent;
 
-    private Friendshipbook fsb; //script
+    private Friendshipbook fsbScript;
 
     private bool inTrigger;
-    private bool inFSB;
+    private bool inStammbaumField;
     private float scalefactor = 1.2f;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        ReturnOrgOrgPosition();
-        ReturnOrgParent();
+        ReturnFsbPosition();
+        ReturnFSBParent();
+        ReturnFSBScript();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        this.transform.localScale = new Vector3(scalefactor, scalefactor, 1f);
+        transform.localScale = new Vector3(scalefactor, scalefactor, 1f);
         ReturnOrgPosition();
         ReturnDragging(true);
     }
     public void OnDrag(PointerEventData eventData)
     {
+        transform.GetChild(0).gameObject.SetActive(false);
         if (dragging)
         {
             Vector3 mousePosition = Input.mousePosition;
             this.transform.position = mousePosition;
         }
-
-        if (inTrigger && !inFSB)
-        {
-            //rectTransform.SetParent(orgParent);
-        }
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         this.transform.localScale = Vector3.one;
+        transform.GetChild(0).gameObject.SetActive(true);
         ReturnDragging(false);
         if (!inTrigger)
         {
@@ -54,19 +51,25 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
         else if (inTrigger)
         {
-            if (inFSB)
+            if (inStammbaumField)
             {
-                if (FSBParent != null) { rectTransform.SetParent(FSBParent); rectTransform.localPosition = Vector3.zero; }
+                if (StammbaumFieldParent != null) { rectTransform.SetParent(StammbaumFieldParent); rectTransform.localPosition = Vector3.zero; Transform child = rectTransform.GetChild(0);
+                    child.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -70f, 0); child.GetComponent<Text>().alignment = TextAnchor.MiddleCenter; child.GetComponent<Text>().color = Color.white;
+                    child.GetComponent<Text>().fontSize = 18;
+                }
                 else { rectTransform.localPosition = orgPosition; }
             }
             else
             {
-                rectTransform.SetParent(orgParent);
-                rectTransform.localPosition = orgorgPosition;
+                rectTransform.SetParent(FSBParent);
+                rectTransform.localPosition = fsbposition;
+                Transform child = rectTransform.GetChild(0);
+                child.GetComponent<RectTransform>().anchoredPosition = new Vector3(260f, 0, 0); child.GetComponent<Text>().alignment = TextAnchor.MiddleCenter; child.GetComponent<Text>().color = Color.black;
+                child.GetComponent<Text>().fontSize = 37;
             }
         }
-        bool isFilled = IsFilled();
-        if (isFilled) { Evaluation(); }
+        bool isFilled = StammbaumIsFull();
+        if (isFilled) { bool isRight = Evaluation(); Debug.Log("You Solution is " + isRight); }
     }
 
     private bool ReturnDragging(bool x)
@@ -81,82 +84,82 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        // "other.gameobject" is the object with the trigger, the "just gameobject" is the dragable one (means the photo)
 
-        ReturnFSB();
-
-        if (fsb.stammbaum.Contains(other.gameObject) && fsb.fsbPhotos.Contains(gameObject))
+        if (fsbScript.stammbaumFields.Contains(other.gameObject) && fsbScript.fsbPhotos.Contains(gameObject))
         {
             ReturnInTrigger(true);
-            ReturnInFSB(true);
+            ReturnInStammbaumField(true);
 
             if (other.gameObject.transform.childCount == 0)
-            { ReturnFSBParent(other.gameObject.transform); }
+            { ReturnStammbaumParent(other.gameObject.transform); }
             else
-            { ReturnFSBParent(null); }
+            { ReturnStammbaumParent(null); }
         }
-        else if (other.gameObject.name == "FSBTrigger" && fsb.fsbPhotos.Contains(gameObject))
+        else if (other.gameObject.name == "FSBTrigger" && fsbScript.fsbPhotos.Contains(gameObject))
         {
             ReturnInTrigger(true);
-            ReturnInFSB(false);
+            ReturnInStammbaumField(false);
         }
-        
     }
     public void OnTriggerExit2D(Collider2D other)
     {
-        // "other.gameobject" is the object with the trigger, the "just gameobject" is the dragable one (means the photo)
 
-        ReturnFSB();
-
-        if (fsb != null)
+        if (fsbScript != null)
         {
-            if (fsb.stammbaum.Contains(other.gameObject) && fsb.fsbPhotos.Contains(gameObject)) { ReturnInTrigger(false); }
+            if (fsbScript.stammbaumFields.Contains(other.gameObject) && fsbScript.fsbPhotos.Contains(gameObject)) { ReturnInTrigger(false); }
         }
-        else if (other.gameObject.name == "FSBTrigger" && fsb.fsbPhotos.Contains(gameObject))
+        else if (other.gameObject.name == "FSBTrigger" && fsbScript.fsbPhotos.Contains(gameObject))
         {
             ReturnInTrigger(false);
         }
     }
-
-    private Friendshipbook ReturnFSB()
+    private Friendshipbook ReturnFSBScript()
     {
-        return fsb = FindFirstObjectByType<Friendshipbook>();
+        return fsbScript = FindFirstObjectByType<Friendshipbook>();
     }
     private bool ReturnInTrigger(bool x)
     {
         return inTrigger = x;
     }
-    private bool ReturnInFSB(bool x)
+    private bool ReturnInStammbaumField(bool x)
     {
-        return inFSB = x;
+        return inStammbaumField = x;
     }
-    private Vector3 ReturnOrgOrgPosition()
+    private Vector3 ReturnFsbPosition()
     {
-        return orgorgPosition = rectTransform.localPosition;
+        return fsbposition = rectTransform.localPosition;
     }
-    private Transform ReturnOrgParent()
+    private Transform ReturnFSBParent()
     {
-        return orgParent = this.gameObject.transform.parent;
+        return FSBParent = this.gameObject.transform.parent;
         
     }
-    private Transform ReturnFSBParent(Transform obj)
+    private Transform ReturnStammbaumParent(Transform transform)
     {
-        return FSBParent = obj;
+        return StammbaumFieldParent = transform;
     }
 
-    private bool IsFilled()
+    private bool StammbaumIsFull()
     {
-        foreach (GameObject obj in fsb.stammbaum)
+        foreach (GameObject field in fsbScript.stammbaumFields)
         {
-            if (obj.transform.childCount == 0)
+            if (field.transform.childCount == 0)
             {
                 return false;
             }
         }
         return true;
     }
-    private void Evaluation()
+    private bool Evaluation()
     {
         Debug.Log("Checking if your solution is right...");
+        foreach (GameObject field in fsbScript.stammbaumFields)
+        {
+            if (field.transform.GetChild(0).name != fsbScript.fsbPhotos[fsbScript.stammbaumFields.IndexOf(field)].name)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
