@@ -19,6 +19,7 @@ public class ChatAttachmentManager : MonoBehaviour
     [Header ("Answers")]
     [SerializeField] private GameObject essentialAnswer;
 
+
     private void Start()
     {
         attachmentList.SetActive(false);
