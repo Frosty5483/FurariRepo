@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
 public class RoomManager : MonoBehaviour
 {
     public List<GameObject> roomlist;
     public int roomIndex = 0;
+
+    public List<bool> RoomCompletion;
 
     void Start()
     {
@@ -16,12 +17,11 @@ public class RoomManager : MonoBehaviour
         switch (a)
         {
             case 0:
-                if (roomIndex != 4) roomIndex++;
-                //else roomIndex = 0;
-                break;
+                if (roomIndex != 4 && RoomCompletion[roomIndex] == true) roomIndex++;
+                else { Debug.Log("please solve the puzzle first"); }
+                    break;
             case 1:
                 if (roomIndex != 0) roomIndex--;
-                //else roomIndex = 4;
                 break;
         }
         RoomUpdater();
