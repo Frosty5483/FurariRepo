@@ -69,7 +69,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
         }
         bool isFilled = StammbaumIsFull();
-        if (isFilled) { bool isRight = Evaluation(); Debug.Log("You Solution is " + isRight); }
+        if (isFilled) { bool isRight = Evaluation(); Debug.Log("You Solution is " + isRight); RoomManager roomManager = FindFirstObjectByType<RoomManager>(); roomManager.RoomCompleted(0); }
     }
 
     private bool ReturnDragging(bool x)
