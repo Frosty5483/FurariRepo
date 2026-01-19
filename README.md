@@ -13,7 +13,8 @@ Nutzungsanleitung:
 7. (Chat)
 
 Screenshot:
-*hier einfügen
+<img width="1877" height="1253" alt="Furari_Start" src="https://github.com/user-attachments/assets/b55ccc81-ee41-4f9c-8b54-c6238c429808" />
+
 
 Development:
 Version: Unity 6000.0.57f1
