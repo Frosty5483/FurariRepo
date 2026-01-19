@@ -4,13 +4,14 @@ Es soll auf seinen eigenen digital footprint aufmerksam machen und zeigen, wie v
 die man so nicht jeden fremden zeigen wollen würde, sollte man auch nicht online sorglos auf Instagram posten beispielsweise.
 
 Nutzungsanleitung:
-1. Das spiel beginnt mit der Aufgabe, den Namen der Person in das Feld einzugeben. (Ava smith)
-2. Im ersten Raum "Foyer" muss man sich die Bilder auf der Wand anschauen, um das Geburtsdatum von Ava rauszufinden (20.07.2003). Man kommt weiter, indem man auf die Tür klickt und die richtige Lösung ins eingabefeld tippt.
-3. Im zweiten Raum "Livingroom" muss man das Freundschaftsbuch aufheben, durchblättern und die Fotos richtig im Stammbaum einordnen.
+1. Das Spiel beginnt mit der Aufgabe, den Namen der Person in das Eingabefeld einzugeben. (Enter-Taste zum Bestätigen) (Ava Smith)
+2. Im ersten Raum "Foyer" muss man sich die Bilder auf der Wand anschauen, um das Geburtsdatum von Ava rauszufinden (27.06.2003). Man kommt weiter, indem man die richtige Lösung ins eingabefeld eintippt und die Enter-Taste drückt..
+3. Im zweiten Raum "Livingroom" muss man das Freundschaftsbuch aufheben, durchblättern und die Fotos richtig im Stammbaum einordnen. Wenn die Lösung stimmt, kommt man bei Mausklick auf die Tür in den nächtsen Raum .
 4. Im dritten Raum "Office" ...
 5. Im vierten Raum "Bedroom" ...
 6. Im fünften Raum "Kitchen" ...
 7. (Chat)
+Eingabe erfolt durch Maus und Tastatur.
 
 Screenshot:
 <img width="1877" height="1253" alt="Furari_Start" src="https://github.com/user-attachments/assets/b55ccc81-ee41-4f9c-8b54-c6238c429808" />
