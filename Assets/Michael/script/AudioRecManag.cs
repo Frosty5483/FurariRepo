@@ -24,6 +24,9 @@ public class AudioRecManag : MonoBehaviour
     [SerializeField] private Image doneImag;
     [SerializeField] private Image loadingImag;
     [SerializeField] private TMP_Text loadingTxt;
+    [SerializeField] private float loadingStep = 0.01f;
+    [SerializeField] private float loadingDelay = 0.1f;
+    [SerializeField] private int maxLoadingStep = 100;
 
     [Header("bools")]
     [SerializeField] private bool stuffedDone;
@@ -80,11 +83,11 @@ public class AudioRecManag : MonoBehaviour
     IEnumerator LoadingAudio()
     {
         loadingTxt.text = "Loading...";
-        for (int i = 0; i <= 100; i++)
+        for (int i = 0; i <= maxLoadingStep; i++)
         {
-            loadingImag.fillAmount += 0.01f;
+            loadingImag.fillAmount += loadingStep;
             Debug.Log("Loading" + i + "fill: " + loadingImag.fillAmount);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(loadingDelay);
             if(!stuffedAnimalObj.activeInHierarchy && !birthdayCardObj.activeInHierarchy && !songRecObj.activeInHierarchy)
             {
                 i = 0;
