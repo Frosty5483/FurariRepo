@@ -33,10 +33,7 @@ public class ItemPullUp : MonoBehaviour
 
             if(!getStuffedAnimalObj.activeInHierarchy && !getBirthdayCardObj.activeInHierarchy && !getSongRecObj.activeInHierarchy)
             {
-                doneImag.sprite = null;
-                loadingTxt.text = null;
-                loadingImag.fillAmount = 0;
-                audioRec.isRecordingFinished = false;
+                ResetRecordingUI();
                 bigImag.gameObject.SetActive(true);
                 bigImag.gameObject.GetComponent<BigItem>().EnableDelayedInteraction();
                 gameObject.SetActive(false);
@@ -47,5 +44,13 @@ public class ItemPullUp : MonoBehaviour
     public bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
+    }
+
+    public void ResetRecordingUI()
+    {
+        doneImag.sprite = null;
+        loadingTxt.text = null;
+        loadingImag.fillAmount = 0;
+        audioRec.isRecordingFinished = false;
     }
 }
