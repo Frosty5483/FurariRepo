@@ -11,6 +11,12 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public GameObject smallMap;
 
+    [Header("Settings")]
+    [SerializeField] private float maxScale = 3f;
+    [SerializeField] private float minScale = 1f;
+    [SerializeField] private float zoomFactor = 1.05f;
+    [SerializeField] private int dragMouseButtonIndex = 2;
+
     void Start()
     {
         isOver = true;
@@ -46,32 +52,32 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             float mouseScrollD = Input.mouseScrollDelta.y;
 
-            gameObject.transform.localScale = gameObject.transform.localScale * mouseScrollD * 1.05f;
+            gameObject.transform.localScale = gameObject.transform.localScale * mouseScrollD * zoomFactor;
         }
         if (Input.mouseScrollDelta.y < 0)
         {
             float mouseScrollD = Input.mouseScrollDelta.y;
 
-            gameObject.transform.localScale = gameObject.transform.localScale / mouseScrollD / 1.05f;
+            gameObject.transform.localScale = gameObject.transform.localScale / mouseScrollD / zoomFactor;
         }
     }
 
     private void ClampScale()
     {
-        if (gameObject.transform.localScale.y > 3)
+        if (gameObject.transform.localScale.y > maxScale)
         {
-            gameObject.transform.localScale = new Vector3(3, 3, 3);
+            gameObject.transform.localScale = new Vector3(maxScale, maxScale, maxScale);
         }
 
-        if (gameObject.transform.localScale.y < 1)
+        if (gameObject.transform.localScale.y < minScale)
         {
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            gameObject.transform.localScale = new Vector3(minScale, minScale, minScale);
         }
     }
 
     private void HandleDrag()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(dragMouseButtonIndex))
         {
             Vector2 mousePos1 = Input.mousePosition;
             float mousePosX = Input.mousePosition.x;
