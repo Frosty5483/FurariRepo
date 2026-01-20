@@ -20,6 +20,11 @@ public class AudioRecPullUp : MonoBehaviour
 
     private void Update()
     {
+        ToggleAudioRecUI();
+    }
+
+    public void ToggleAudioRecUI()
+    {
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (!shown)
