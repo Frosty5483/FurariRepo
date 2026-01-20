@@ -26,12 +26,9 @@ public class ItemPullUp : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (IsMouseOverUI())
-            {
-                return;
-            }
+            if (IsMouseOverUI()) return;
 
-            if(!getStuffedAnimalObj.activeInHierarchy && !getBirthdayCardObj.activeInHierarchy && !getSongRecObj.activeInHierarchy)
+            if (!getStuffedAnimalObj.activeInHierarchy && !getBirthdayCardObj.activeInHierarchy && !getSongRecObj.activeInHierarchy)
             {
                 ResetRecordingUI();
                 bigImag.gameObject.SetActive(true);
