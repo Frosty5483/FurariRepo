@@ -31,7 +31,17 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     
     void Update()
     {
+        HandleZoom();
 
+        ClampScale();
+
+        HandleDrag();
+
+        HandleExitInput();
+    }
+
+    private void HandleZoom()
+    {
         if (Input.mouseScrollDelta.y > 0)
         {
             float mouseScrollD = Input.mouseScrollDelta.y;
@@ -44,7 +54,10 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
             gameObject.transform.localScale = gameObject.transform.localScale / mouseScrollD / 1.05f;
         }
+    }
 
+    private void ClampScale()
+    {
         if (gameObject.transform.localScale.y > 3)
         {
             gameObject.transform.localScale = new Vector3(3, 3, 3);
@@ -54,8 +67,10 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
+    }
 
-
+    private void HandleDrag()
+    {
         if (Input.GetMouseButtonDown(2))
         {
             Vector2 mousePos1 = Input.mousePosition;
@@ -66,16 +81,19 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
             isDraggin = true;
         }
-        if(isDraggin)
+        if (isDraggin)
         {
-            gameObject.transform.localPosition = Input.mousePosition + new Vector3(offset.x,offset.y,0);
+            gameObject.transform.localPosition = Input.mousePosition + new Vector3(offset.x, offset.y, 0);
         }
         if (Input.GetMouseButtonUp(2))
         {
             isDraggin = false;
         }
+    }
 
-        if(isOver == false)
+    private void HandleExitInput()
+    {
+        if (isOver == false)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -89,9 +107,6 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             smallMap.SetActive(true);
             gameObject.SetActive(false);
         }
-
     }
-
-  
 
 }
