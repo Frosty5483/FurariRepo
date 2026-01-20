@@ -6,18 +6,22 @@ public class clickForBig : MonoBehaviour
 
     void Start()
     {
-        makeBigObj.SetActive(false);
-        makeBigObj.transform.localScale = new Vector3 (1, 1, 1);
+        ResetBigObjectTransform(false);
     }
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            makeBigObj.SetActive(true);
-            makeBigObj.transform.localScale = new Vector3(1, 1, 1);
-            makeBigObj.transform.localPosition = new Vector3(0, 0, 0);
-            gameObject.SetActive(false);
+            ResetBigObjectTransform(true);
         }
+    }
+
+    private void ResetBigObjectTransform(bool bigObjEnabled)
+    {
+        makeBigObj.SetActive(bigObjEnabled);
+        makeBigObj.transform.localScale = new Vector3(1, 1, 1);
+        makeBigObj.transform.localPosition = new Vector3(0, 0, 0);
+        gameObject.SetActive(!bigObjEnabled);
     }
 }
