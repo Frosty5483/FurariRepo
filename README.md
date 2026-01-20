@@ -4,8 +4,8 @@ Es soll auf seinen eigenen digital footprint aufmerksam machen und zeigen, wie v
 die man so nicht jeden fremden zeigen wollen würde, sollte man auch nicht online sorglos auf Instagram posten beispielsweise.
 
 Nutzungsanleitung:
-1. Das Spiel beginnt mit der Aufgabe, den Namen der Person in das Eingabefeld einzugeben. (Enter-Taste zum Bestätigen) (Ava Smith)
-2. Im ersten Raum "Foyer" muss man sich die Bilder auf der Wand anschauen, um das Geburtsdatum von Ava rauszufinden (27.06.2003). Man kommt weiter, indem man die richtige Lösung ins eingabefeld eintippt und die Enter-Taste drückt..
+1. Das Spiel beginnt mit der Aufgabe, den Namen der Person in das Eingabefeld einzugeben. (Enter-Taste zum Bestätigen) <details><summary>Lösung:</summary>**(Ava Smith)**</details>
+2. Im ersten Raum "Foyer" muss man sich die Bilder auf der Wand anschauen, um das Geburtsdatum von der Person rauszufinden. Man kommt weiter, indem man die richtige Lösung ins eingabefeld eintippt und die Enter-Taste drückt.. <details><summary>Lösung:</summary>**(27.06.2003)**</details>
 3. Im zweiten Raum "Livingroom" muss man das Freundschaftsbuch aufheben, durchblättern und die Fotos richtig im Stammbaum einordnen. Wenn die Lösung stimmt, kommt man bei Mausklick auf die Tür in den nächtsen Raum .
 4. Im dritten Raum "Office" ...
 5. Im vierten Raum "Bedroom" ...
