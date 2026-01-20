@@ -30,8 +30,8 @@ public class AudioRecManag : MonoBehaviour
     [SerializeField] private bool birthdayDone;
     [SerializeField] private bool songrecDone;
 
-    public bool testBoolA;
-    public bool testBoolB;
+    public bool isLoadingStarted;
+    public bool isRecordingFinished;
 
     private void Update()
     {
@@ -54,10 +54,10 @@ public class AudioRecManag : MonoBehaviour
 
     void RecordingAudio(AudioClip audioClip, bool isRecorded, Sprite doneSpr)
     {
-        if (testBoolA == false && testBoolB == false)
+        if (isLoadingStarted == false && isRecordingFinished == false)
         {
             StartCoroutine(LoadingAudio());
-            testBoolA = true;
+            isLoadingStarted = true;
         }
         
         if(loadingImag.fillAmount == 1)
@@ -66,8 +66,8 @@ public class AudioRecManag : MonoBehaviour
             isRecorded = true;
             doneImag.sprite = doneSpr;
             loadingTxt.text = "Done!";
-            testBoolB = true;
-            testBoolA = false;
+            isRecordingFinished = true;
+            isLoadingStarted = false;
             if(stuffedAnimalObj.activeInHierarchy)
                 stuffedDone = true;
             if(birthdayCardObj.activeInHierarchy)
@@ -89,7 +89,7 @@ public class AudioRecManag : MonoBehaviour
             {
                 i = 0;
                 loadingImag.fillAmount = 0;
-                testBoolA = false;
+                isLoadingStarted = false;
                 StopAllCoroutines();
             }
         }

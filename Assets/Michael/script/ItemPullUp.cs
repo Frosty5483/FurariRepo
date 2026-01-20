@@ -36,7 +36,7 @@ public class ItemPullUp : MonoBehaviour
                 doneImag.sprite = null;
                 loadingTxt.text = null;
                 loadingImag.fillAmount = 0;
-                audioRec.testBoolB = false;
+                audioRec.isRecordingFinished = false;
                 bigImag.gameObject.SetActive(true);
                 bigImag.gameObject.GetComponent<BigItem>().whenShown();
                 gameObject.SetActive(false);

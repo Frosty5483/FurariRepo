@@ -31,7 +31,7 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 {
                     shouldStart = false;
                     item.SetActive(true);
-                    audioRec.testBoolB = false;
+                    audioRec.isRecordingFinished = false;
                     gameObject.SetActive(false);
                 }
             }
@@ -41,7 +41,7 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             shouldStart = false;
             item.SetActive(true);
-            audioRec.testBoolB = false;
+            audioRec.isRecordingFinished = false;
             gameObject.SetActive(false);
         }
     }
