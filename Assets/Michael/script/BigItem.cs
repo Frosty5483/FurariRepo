@@ -29,20 +29,14 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 if (Input.GetMouseButton(0))
                 {
-                    shouldStart = false;
-                    item.SetActive(true);
-                    audioRec.isRecordingFinished = false;
-                    gameObject.SetActive(false);
+                    ExitBigItemView();
                 }
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            shouldStart = false;
-            item.SetActive(true);
-            audioRec.isRecordingFinished = false;
-            gameObject.SetActive(false);
+            ExitBigItemView();
         }
     }
 
@@ -55,5 +49,13 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         yield return new WaitForSeconds(0.5f);
         shouldStart = true;
+    }
+
+    public void ExitBigItemView()
+    {
+        shouldStart = false;
+        item.SetActive(true);
+        audioRec.isRecordingFinished = false;
+        gameObject.SetActive(false);
     }
 }
