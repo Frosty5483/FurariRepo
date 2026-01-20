@@ -24,14 +24,17 @@ public class AudioRecManag : MonoBehaviour
     [SerializeField] private Image doneImag;
     [SerializeField] private Image loadingImag;
     [SerializeField] private TMP_Text loadingTxt;
+    [SerializeField] private float loadingStep = 0.01f;
+    [SerializeField] private float loadingDelay = 0.1f;
+    [SerializeField] private int maxLoadingStep = 100;
 
     [Header("bools")]
     [SerializeField] private bool stuffedDone;
     [SerializeField] private bool birthdayDone;
     [SerializeField] private bool songrecDone;
 
-    public bool testBoolA;
-    public bool testBoolB;
+    public bool isLoadingStarted;
+    public bool isRecordingFinished;
 
     private void Update()
     {
@@ -54,10 +57,10 @@ public class AudioRecManag : MonoBehaviour
 
     void RecordingAudio(AudioClip audioClip, bool isRecorded, Sprite doneSpr)
     {
-        if (testBoolA == false && testBoolB == false)
+        if (isLoadingStarted == false && isRecordingFinished == false)
         {
             StartCoroutine(LoadingAudio());
-            testBoolA = true;
+            isLoadingStarted = true;
         }
         
         if(loadingImag.fillAmount == 1)
@@ -66,8 +69,8 @@ public class AudioRecManag : MonoBehaviour
             isRecorded = true;
             doneImag.sprite = doneSpr;
             loadingTxt.text = "Done!";
-            testBoolB = true;
-            testBoolA = false;
+            isRecordingFinished = true;
+            isLoadingStarted = false;
             if(stuffedAnimalObj.activeInHierarchy)
                 stuffedDone = true;
             if(birthdayCardObj.activeInHierarchy)
@@ -80,16 +83,16 @@ public class AudioRecManag : MonoBehaviour
     IEnumerator LoadingAudio()
     {
         loadingTxt.text = "Loading...";
-        for (int i = 0; i <= 100; i++)
+        for (int i = 0; i <= maxLoadingStep; i++)
         {
-            loadingImag.fillAmount += 0.01f;
+            loadingImag.fillAmount += loadingStep;
             Debug.Log("Loading" + i + "fill: " + loadingImag.fillAmount);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(loadingDelay);
             if(!stuffedAnimalObj.activeInHierarchy && !birthdayCardObj.activeInHierarchy && !songRecObj.activeInHierarchy)
             {
                 i = 0;
                 loadingImag.fillAmount = 0;
-                testBoolA = false;
+                isLoadingStarted = false;
                 StopAllCoroutines();
             }
         }
