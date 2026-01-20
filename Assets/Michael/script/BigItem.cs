@@ -40,7 +40,7 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
-    public void whenShown()
+    public void EnableDelayedInteraction()
     {
         StartCoroutine(delay());
     }

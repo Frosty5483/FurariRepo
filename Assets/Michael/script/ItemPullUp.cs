@@ -38,7 +38,7 @@ public class ItemPullUp : MonoBehaviour
                 loadingImag.fillAmount = 0;
                 audioRec.isRecordingFinished = false;
                 bigImag.gameObject.SetActive(true);
-                bigImag.gameObject.GetComponent<BigItem>().whenShown();
+                bigImag.gameObject.GetComponent<BigItem>().EnableDelayedInteraction();
                 gameObject.SetActive(false);
             }
         }
