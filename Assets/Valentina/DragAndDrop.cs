@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform rectTransform;
-    private bool dragging;
 
     private Vector3 orgPosition, fsbposition;
     private Transform FSBParent, StammbaumFieldParent;
@@ -29,22 +28,17 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         transform.localScale = new Vector3(scalefactor, scalefactor, 1f);
         ReturnOrgPosition();
-        ReturnDragging(true);
     }
     public void OnDrag(PointerEventData eventData)
     {
         transform.GetChild(0).gameObject.SetActive(false);
-        if (dragging)
-        {
-            Vector3 mousePosition = Input.mousePosition;
-            this.transform.position = mousePosition;
-        }
+        Vector3 mousePosition = Input.mousePosition;
+        this.transform.position = mousePosition;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         this.transform.localScale = Vector3.one;
         transform.GetChild(0).gameObject.SetActive(true);
-        ReturnDragging(false);
         if (!inTrigger)
         {
             rectTransform.localPosition = orgPosition;
@@ -53,28 +47,20 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             if (inStammbaumField)
             {
-                if (StammbaumFieldParent != null) { rectTransform.SetParent(StammbaumFieldParent); rectTransform.localPosition = Vector3.zero; Transform child = rectTransform.GetChild(0);
-                    child.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -70f, 0); child.GetComponent<Text>().alignment = TextAnchor.MiddleCenter; child.GetComponent<Text>().color = Color.white;
-                    child.GetComponent<Text>().fontSize = 18;
-                }
+                if (StammbaumFieldParent != null) { rectTransform.SetParent(StammbaumFieldParent); rectTransform.localPosition = Vector3.zero; EditText(new Vector2 (0, -70f), 18);}
                 else { rectTransform.localPosition = orgPosition; }
             }
             else
-            {
-                rectTransform.SetParent(FSBParent);
-                rectTransform.localPosition = fsbposition;
-                Transform child = rectTransform.GetChild(0);
-                child.GetComponent<RectTransform>().anchoredPosition = new Vector3(260f, 0, 0); child.GetComponent<Text>().alignment = TextAnchor.MiddleCenter; child.GetComponent<Text>().color = Color.black;
-                child.GetComponent<Text>().fontSize = 37;
-            }
+            { rectTransform.SetParent(FSBParent); rectTransform.localPosition = fsbposition; EditText(new Vector2(260f, 0), 37); }
         }
         bool isFilled = StammbaumIsFull();
         if (isFilled) { bool isRight = Evaluation(); Debug.Log("You Solution is " + isRight); RoomManager roomManager = FindFirstObjectByType<RoomManager>(); roomManager.RoomCompleted(0); }
     }
-
-    private bool ReturnDragging(bool x)
+    private void EditText(Vector2 position, int fontsize)
     {
-        return dragging = x;
+        Transform child = rectTransform.GetChild(0);
+        child.GetComponent<RectTransform>().anchoredPosition = position; child.GetComponent<Text>().alignment = TextAnchor.MiddleCenter; child.GetComponent<Text>().color = Color.white;
+        child.GetComponent<Text>().fontSize = 18;
     }
 
     private Vector3 ReturnOrgPosition()
@@ -84,10 +70,10 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        ReturnInTrigger(true);
 
         if (fsbScript.stammbaumFields.Contains(other.gameObject) && fsbScript.fsbPhotos.Contains(gameObject))
         {
-            ReturnInTrigger(true);
             ReturnInStammbaumField(true);
 
             if (other.gameObject.transform.childCount == 0)
@@ -95,15 +81,10 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             else
             { ReturnStammbaumParent(null); }
         }
-        else if (other.gameObject.name == "FSBTrigger" && fsbScript.fsbPhotos.Contains(gameObject))
-        {
-            ReturnInTrigger(true);
-            ReturnInStammbaumField(false);
-        }
+        else if (other.gameObject.name == "FSBTrigger" && fsbScript.fsbPhotos.Contains(gameObject)) { ReturnInStammbaumField(false); }
     }
     public void OnTriggerExit2D(Collider2D other)
     {
-
         if (fsbScript != null)
         {
             if (fsbScript.stammbaumFields.Contains(other.gameObject) && fsbScript.fsbPhotos.Contains(gameObject)) { ReturnInTrigger(false); }

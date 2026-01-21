@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Friendshipbook : MonoBehaviour
 {
     [SerializeField] private GameObject bookPuzzle;
     [SerializeField] private GameObject buttonToBook;
     [SerializeField] private GameObject blackScreen;
+    [SerializeField] private GameObject infoText;
+    [SerializeField] private Image roomImage;
+    [SerializeField] private Sprite newRoomSprite;
     public List<GameObject> pageList;
 
     public List<GameObject> stammbaumFields;
@@ -25,12 +29,17 @@ public class Friendshipbook : MonoBehaviour
         }
         else { Debug.Log("Pick up the Friendshipbook first!"); }
     }
+    public void ShowInfoText()
+    {
+        infoText.GetComponent<Animator>().SetTrigger("Play");
+    }
 
     public void PickUpFriendshipbook()
     {
         Debug.Log("The Friendshipbook has been picked up!");
         ReturnFsbValue();
         Destroy(buttonToBook);
+        ChangeRoomSprite();
     }
 
     public void TurnPage()
@@ -50,4 +59,10 @@ public class Friendshipbook : MonoBehaviour
     {
         return bookPickedUp = true;
     }
+
+    private void ChangeRoomSprite()
+    {
+        roomImage.sprite = newRoomSprite;
+    }
+
 }
