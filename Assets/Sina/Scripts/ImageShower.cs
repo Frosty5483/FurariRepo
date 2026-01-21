@@ -2,54 +2,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ImageShower : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ImageShower : MonoBehaviour
 {
-    [SerializeField] private Image image;
-    private bool imageShown = false;
-    private bool isOver;
+    [SerializeField] private GameObject image;
 
     private void Start()
     {
-        image.enabled = false;
+        image.SetActive(false);
     }
 
-    void Update()
-    {
-        HandleExitInput();
-    }
 
     public void ChangeState()
-    {
-        imageShown = !imageShown;
-        image.enabled = imageShown;
+    {;
+        image.SetActive(false);
+        this.gameObject.SetActive(false);
     }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        isOver = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isOver = false;
-    }
-
-    private void HandleExitInput()
-    {
-        if (isOver == false)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                imageShown = !imageShown;
-                image.enabled = imageShown;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            imageShown = !imageShown;
-            image.enabled = imageShown;
-        }
-    }
-
 }
