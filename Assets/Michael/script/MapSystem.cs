@@ -91,7 +91,7 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             gameObject.transform.localPosition = Input.mousePosition + new Vector3(offset.x, offset.y, 0);
         }
-        if (Input.GetMouseButtonUp(2))
+        if (Input.GetMouseButtonUp(dragMouseButtonIndex))
         {
             isDraggin = false;
         }
