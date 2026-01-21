@@ -13,8 +13,8 @@ public class ImageShower : MonoBehaviour
 
 
     public void ChangeState()
-    {;
-        image.SetActive(false);
+    {
+        image.SetActive(true);
         this.gameObject.SetActive(false);
     }
 }

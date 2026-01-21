@@ -31,14 +31,14 @@ public class ImageShowerHelper : MonoBehaviour, IPointerEnterHandler, IPointerEx
             if (Input.GetMouseButtonDown(0))
             {
                 gameObject.SetActive(false);
-                button.SetActive(false);
+                button.SetActive(true);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameObject.SetActive(false);
-            button.SetActive(false);
+            button.SetActive(true);
         }
     }
 }
