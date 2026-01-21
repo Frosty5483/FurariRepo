@@ -935,7 +935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1243,11 +1243,14 @@ MonoBehaviour:
   doneImag: {fileID: 2022784360}
   loadingImag: {fileID: 1453460433}
   loadingTxt: {fileID: 852856660}
+  loadingStep: 0.01
+  loadingDelay: 0.1
+  maxLoadingStep: 100
   stuffedDone: 0
   birthdayDone: 0
   songrecDone: 0
-  testBoolA: 0
-  testBoolB: 0
+  isLoadingStarted: 0
+  isRecordingFinished: 0
 --- !u!1 &1453460431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,6 +1532,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smallMap: {fileID: 563036661}
+  maxScale: 3
+  minScale: 1
+  zoomFactor: 1.05
+  dragMouseButtonIndex: 2
 --- !u!114 &1745544322
 MonoBehaviour:
   m_ObjectHideFlags: 0
