@@ -9,15 +9,7 @@ public class clickForBig : MonoBehaviour
         ResetBigObjectTransform(false);
     }
 
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            ResetBigObjectTransform(true);
-        }
-    }
-
-    private void ResetBigObjectTransform(bool bigObjEnabled)
+    public void ResetBigObjectTransform(bool bigObjEnabled)
     {
         makeBigObj.SetActive(bigObjEnabled);
         makeBigObj.transform.localScale = new Vector3(1, 1, 1);

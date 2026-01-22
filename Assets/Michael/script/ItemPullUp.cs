@@ -16,10 +16,12 @@ public class ItemPullUp : MonoBehaviour
     [SerializeField] private Image loadingImag;
     [SerializeField] private TMP_Text loadingTxt;
 
+    [SerializeField] private GameObject exitButton;
+
     private void Start()
     {
         bigImag.gameObject.SetActive(false);
-        
+        exitButton.SetActive(false);
     }
 
     public void ItemPull()
@@ -30,6 +32,7 @@ public class ItemPullUp : MonoBehaviour
             bigImag.gameObject.SetActive(true);
             bigImag.gameObject.GetComponent<BigItem>().EnableDelayedInteraction();
             gameObject.SetActive(false);
+            exitButton.SetActive(true);
         }
     }
 

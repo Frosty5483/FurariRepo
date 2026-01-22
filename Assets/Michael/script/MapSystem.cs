@@ -11,6 +11,7 @@ public class MapSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public GameObject smallMap;
 
+
     [Header("Settings")]
     [SerializeField] private float maxScale = 3f;
     [SerializeField] private float minScale = 1f;

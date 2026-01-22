@@ -7,6 +7,9 @@ TagManager:
   - BirthdayCard
   - SongRec
   - StuffedAnimal
+  - AnimalButton
+  - BirthdayButton
+  - SongButton
   layers:
   - Default
   - TransparentFX

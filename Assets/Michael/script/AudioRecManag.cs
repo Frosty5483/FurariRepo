@@ -9,6 +9,7 @@ public class AudioRecManag : MonoBehaviour
     [SerializeField] private AudioClip animal_Clip;
     [SerializeField] private AudioClip birthday_Clip;
     [SerializeField] private AudioClip songrec_Clip;
+    [SerializeField] private AudioSource audioSource;
 
     [Header("Graphics")]
     [SerializeField] private Sprite animalSpr;
@@ -29,9 +30,9 @@ public class AudioRecManag : MonoBehaviour
     [SerializeField] private int maxLoadingStep = 100;
 
     [Header("bools")]
-    [SerializeField] private bool stuffedDone;
-    [SerializeField] private bool birthdayDone;
-    [SerializeField] private bool songrecDone;
+    public bool stuffedDone;
+    public bool birthdayDone;
+    public bool songrecDone;
 
     public bool isLoadingStarted;
     public bool isRecordingFinished;
@@ -60,12 +61,14 @@ public class AudioRecManag : MonoBehaviour
         if (isLoadingStarted == false && isRecordingFinished == false)
         {
             StartCoroutine(LoadingAudio());
+            audioSource.resource = audioClip;
+            audioSource.Play();
             isLoadingStarted = true;
         }
         
         if(loadingImag.fillAmount == 1)
         {
-            Debug.Log("sprite");
+            audioSource.Stop();
             isRecorded = true;
             doneImag.sprite = doneSpr;
             loadingTxt.text = "Done!";
@@ -86,13 +89,13 @@ public class AudioRecManag : MonoBehaviour
         for (int i = 0; i <= maxLoadingStep; i++)
         {
             loadingImag.fillAmount += loadingStep;
-            Debug.Log("Loading" + i + "fill: " + loadingImag.fillAmount);
             yield return new WaitForSeconds(loadingDelay);
             if(!stuffedAnimalObj.activeInHierarchy && !birthdayCardObj.activeInHierarchy && !songRecObj.activeInHierarchy)
             {
                 i = 0;
                 loadingImag.fillAmount = 0;
                 isLoadingStarted = false;
+                audioSource.Stop();
                 StopAllCoroutines();
             }
         }
