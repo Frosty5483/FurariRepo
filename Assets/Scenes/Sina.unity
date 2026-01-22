@@ -906,10 +906,8 @@ MonoBehaviour:
   foundWords: []
   foundExtraWordsCount: 0
   attachments: {fileID: 440708079}
-  essentialAnswer: {fileID: 8511907397802970459, guid: ee026fb1d06b0d445ba2330c3c033801, type: 3}
-  extraAnswer: {fileID: 8511907397802970459, guid: cb2d383794cfc34498950503c66e9328, type: 3}
-  wrongAnswer: {fileID: 2050966557186462592, guid: 757fd5993d3b77d4aa61bdbe5c914e5c, type: 3}
-  foundAnswer: {fileID: 2050966557186462592, guid: b18bbdade7b02c844827700eb065ac58, type: 3}
+  answerObject: {fileID: 0}
+  answerChoice: []
   chatField: {fileID: 409664833}
 --- !u!114 &440708079
 MonoBehaviour:
@@ -928,7 +926,11 @@ MonoBehaviour:
   - {fileID: 4117286568687622521}
   attachmentsFound: 0101
   attachmentsSent: 0
+  attachmentAnswer1: 
+  attachmentAnswer2: 
+  checkAndAnswer: {fileID: 0}
   nothingHereText: {fileID: 3609925746130397916}
+  roomManager: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

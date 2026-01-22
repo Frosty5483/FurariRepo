@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class CheckAndAnswer : MonoBehaviour
 {
@@ -60,6 +60,6 @@ public class CheckAndAnswer : MonoBehaviour
     public void Answer(int answerChoiceIndex)
     {
         GameObject answer = Instantiate(answerObject, chatField.transform);
-        answer.GetComponent<Text>().text = answerChoice[answerChoiceIndex];
+        answer.GetComponent<TextMeshProUGUI>().text = answerChoice[answerChoiceIndex];
     }
 }

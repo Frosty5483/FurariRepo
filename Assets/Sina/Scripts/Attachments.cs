@@ -6,20 +6,39 @@ public class Attachments : MonoBehaviour
     [SerializeField] public GameObject[] attachmentTextObjects;
     public bool[] attachmentsFound;
     public int attachmentsSent;
-
-    [SerializeField] private string attachmentAnswer1;
-    [SerializeField] private string attachmentAnswer2;
     [SerializeField] CheckAndAnswer checkAndAnswer;
 
     [SerializeField] private GameObject nothingHereText;
     private bool anyFound;
 
     [SerializeField] private RoomManager roomManager;
+    [SerializeField] private AudioRecManag recManager;
 
     private void Start()
     {
         anyFound = false;
     }
+
+    private void Update()
+    {
+        if (recManager.stuffedDone)
+        {
+            attachmentsFound[0] = true;
+            recManager.stuffedDone = false;
+        }
+        if (recManager.birthdayDone) 
+        {
+            attachmentsFound[1] = true;
+            recManager.birthdayDone = false;
+        }
+        if (recManager.songrecDone)
+        {
+            attachmentsFound[2] = true;
+            recManager.songrecDone = false;
+        }
+
+    }
+
 
     public void AttachmentList()
     {
@@ -37,13 +56,15 @@ public class Attachments : MonoBehaviour
 
     public void AttachmentAnswer()
     {
-        if (attachmentsSent == attachmentsFound.Length)
+        Debug.Log("hallo");
+        if (attachmentsSent == attachmentsFound.Length - 1)
         {
             checkAndAnswer.Answer(5);
             roomManager.RoomCompletion[4] = true;
         }
         else
         {
+            attachmentsSent++;
             checkAndAnswer.Answer(4);
         }
     }

@@ -8,6 +8,7 @@ public class Result : MonoBehaviour
     private int extraWordsCount;
     private int essentialWordsCount;
 
+    [SerializeField] private GameObject resultButton;
     [SerializeField] private GameObject resultUI;
     [SerializeField] private GameObject resultSlider;
     [SerializeField] private TextMeshProUGUI resultText;
@@ -18,19 +19,30 @@ public class Result : MonoBehaviour
     public string goodScore;
     public string greatScore;
 
+    [SerializeField] private MapKnob mapKnob;
+
     void Start()
     {
         essentialWordsCount = checkAndAnswer.essentialWords.Count + attachments.attachmentsSent;
         extraWordsCount = checkAndAnswer.extraWords.Count;
         resultUI.SetActive(false);
         resultSlider.SetActive(false);
+        resultButton.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (mapKnob.locationRemembdered)
+        {
+            resultButton.SetActive(true);
+        }
     }
 
     public void ShowResult()
     {
         resultUI.SetActive(true);
         Debug.Log("Essential Words: " + checkAndAnswer.essentialWords.Count);
-        if (checkAndAnswer.essentialWords.Count + attachments.attachmentsSent > attachments.attachmentsFound.Length)
+        if (checkAndAnswer.essentialWords.Count + attachments.attachmentsSent > attachments.attachmentsFound.Length - 1)
         {
             Debug.Log("bad");
             resultSlider.SetActive(false);
