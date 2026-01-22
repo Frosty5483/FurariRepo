@@ -308,7 +308,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 440708073}
         m_TargetAssemblyTypeName: Chat, Assembly-CSharp
-        m_MethodName: HideChat
+        m_MethodName: ChangeChat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -802,8 +802,10 @@ GameObject:
   m_Component:
   - component: {fileID: 440708074}
   - component: {fileID: 440708073}
-  - component: {fileID: 440708075}
   - component: {fileID: 440708076}
+  - component: {fileID: 440708079}
+  - component: {fileID: 440708078}
+  - component: {fileID: 440708077}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -824,6 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chat: {fileID: 106328551}
+  attachmentList: {fileID: 415818544}
 --- !u!4 &440708074
 Transform:
   m_ObjectHideFlags: 0
@@ -839,36 +842,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &440708075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440708072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 706373d4f15e1b54fa46b1b9b8dc3cd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputField: {fileID: 1809863726}
-  message: {fileID: 1893747619103897106, guid: b3b2da515305f1841a6aff41571e3b62, type: 3}
-  chatField: {fileID: 409664833}
-  essentialWords:
-  - Weiblich
-  - "Hellh\xE4utig"
-  - "Br\xFCnette"
-  - Klein
-  extraWords:
-  - Lustig
-  - "K\xF6chin"
-  - Sportlich
-  foundWords: []
-  essentialAnswer: {fileID: 8511907397802970459, guid: ee026fb1d06b0d445ba2330c3c033801, type: 3}
-  extraAnswer: {fileID: 8511907397802970459, guid: cb2d383794cfc34498950503c66e9328, type: 3}
-  wrongAnswer: {fileID: 2050966557186462592, guid: 757fd5993d3b77d4aa61bdbe5c914e5c, type: 3}
-  foundAnswer: {fileID: 2050966557186462592, guid: b18bbdade7b02c844827700eb065ac58, type: 3}
-  foundExtraWordsCount: 0
 --- !u!114 &440708076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,8 +854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a337952c56ac43d4488e0b2e0e4e48d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatInputManager: {fileID: 440708075}
-  chatAttachmentManager: {fileID: 1725381573}
+  checkAndAnswer: {fileID: 440708078}
+  attachments: {fileID: 440708079}
   resultUI: {fileID: 1476519084}
   resultSlider: {fileID: 1803181250}
   resultText: {fileID: 411803435}
@@ -890,6 +863,72 @@ MonoBehaviour:
   okScore: You did okay...
   goodScore: You have done good.
   greatScore: You did great!
+--- !u!114 &440708077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440708072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79e3b8b918fb6f459863d5655358bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 1809863726}
+  attachments: {fileID: 440708079}
+  message: {fileID: 1893747619103897106, guid: b3b2da515305f1841a6aff41571e3b62, type: 3}
+  chatField: {fileID: 409664833}
+  checkAndAnswer: {fileID: 440708078}
+--- !u!114 &440708078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440708072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7b1da657e75b6469aa3a0a24918f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  essentialWords:
+  - 1
+  - 2
+  - 3
+  extraWords:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  foundWords: []
+  foundExtraWordsCount: 0
+  attachments: {fileID: 440708079}
+  essentialAnswer: {fileID: 8511907397802970459, guid: ee026fb1d06b0d445ba2330c3c033801, type: 3}
+  extraAnswer: {fileID: 8511907397802970459, guid: cb2d383794cfc34498950503c66e9328, type: 3}
+  wrongAnswer: {fileID: 2050966557186462592, guid: 757fd5993d3b77d4aa61bdbe5c914e5c, type: 3}
+  foundAnswer: {fileID: 2050966557186462592, guid: b18bbdade7b02c844827700eb065ac58, type: 3}
+  chatField: {fileID: 409664833}
+--- !u!114 &440708079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440708072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dde0365ccaa4c4418850f20fee96c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachmentTextObjects:
+  - {fileID: 3457747334253275611}
+  - {fileID: 4117286568687622521}
+  attachmentsFound: 0101
+  attachmentsSent: 0
+  nothingHereText: {fileID: 3609925746130397916}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,7 +2404,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 440708073}
         m_TargetAssemblyTypeName: Chat, Assembly-CSharp
-        m_MethodName: ShowChat
+        m_MethodName: ChangeChat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2547,7 +2586,6 @@ GameObject:
   - component: {fileID: 1725381576}
   - component: {fileID: 1725381575}
   - component: {fileID: 1725381574}
-  - component: {fileID: 1725381573}
   m_Layer: 5
   m_Name: Attachment
   m_TagString: Untagged
@@ -2575,28 +2613,6 @@ RectTransform:
   m_AnchoredPosition: {x: 256.1, y: -274}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1725381573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725381571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3967a896ad765724b8d6441f56306220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachmentList: {fileID: 415818544}
-  chatField: {fileID: 409664833}
-  sentAttachments: 0
-  attachmentTextObjects:
-  - {fileID: 4117286568687622521}
-  - {fileID: 3457747334253275611}
-  attachmentsFound: 0101
-  message: {fileID: 1893747619103897106, guid: b3b2da515305f1841a6aff41571e3b62, type: 3}
-  nothingHereText: {fileID: 3609925746130397916}
-  essentialAnswer: {fileID: 8511907397802970459, guid: ee026fb1d06b0d445ba2330c3c033801, type: 3}
 --- !u!114 &1725381574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2641,8 +2657,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1725381573}
-        m_TargetAssemblyTypeName: ChatAttachmentManager, Assembly-CSharp
+      - m_Target: {fileID: 440708073}
+        m_TargetAssemblyTypeName: Chat, Assembly-CSharp
+        m_MethodName: ShowAttachmentList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 440708079}
+        m_TargetAssemblyTypeName: Attachments, Assembly-CSharp
         m_MethodName: AttachmentList
         m_Mode: 1
         m_Arguments:
@@ -2882,8 +2910,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 440708075}
-        m_TargetAssemblyTypeName: ChatInputManager, Assembly-CSharp
+      - m_Target: {fileID: 440708077}
+        m_TargetAssemblyTypeName: Send, Assembly-CSharp
         m_MethodName: MessageSent
         m_Mode: 1
         m_Arguments:
@@ -3495,14 +3523,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1725381573}
-        m_TargetAssemblyTypeName: ChatAttachmentManager, Assembly-CSharp
-        m_MethodName: SendAttachment
+      - m_Target: {fileID: 440708077}
+        m_TargetAssemblyTypeName: Send, Assembly-CSharp
+        m_MethodName: AttachmentSent
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3733,14 +3761,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1725381573}
-        m_TargetAssemblyTypeName: ChatAttachmentManager, Assembly-CSharp
-        m_MethodName: SendAttachment
+      - m_Target: {fileID: 440708077}
+        m_TargetAssemblyTypeName: Send, Assembly-CSharp
+        m_MethodName: AttachmentSent
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

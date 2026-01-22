@@ -3,8 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 public class Result : MonoBehaviour
 {
-    [SerializeField] private ChatInputManager chatInputManager;
-    [SerializeField] private ChatAttachmentManager chatAttachmentManager;
+    [SerializeField] private CheckAndAnswer checkAndAnswer;
+    [SerializeField] private Attachments attachments;
     private int extraWordsCount;
     private int essentialWordsCount;
 
@@ -20,8 +20,8 @@ public class Result : MonoBehaviour
 
     void Start()
     {
-        essentialWordsCount = chatInputManager.essentialWords.Count + chatAttachmentManager.sentAttachments;
-        extraWordsCount = chatInputManager.extraWords.Count;
+        essentialWordsCount = checkAndAnswer.essentialWords.Count + attachments.attachmentsSent;
+        extraWordsCount = checkAndAnswer.extraWords.Count;
         resultUI.SetActive(false);
         resultSlider.SetActive(false);
     }
@@ -29,8 +29,8 @@ public class Result : MonoBehaviour
     public void ShowResult()
     {
         resultUI.SetActive(true);
-        Debug.Log("Essential Words: " + chatInputManager.essentialWords.Count);
-        if (chatInputManager.essentialWords.Count + chatAttachmentManager.sentAttachments > chatAttachmentManager.attachmentsFound.Length)
+        Debug.Log("Essential Words: " + checkAndAnswer.essentialWords.Count);
+        if (checkAndAnswer.essentialWords.Count + attachments.attachmentsSent > attachments.attachmentsFound.Length)
         {
             Debug.Log("bad");
             resultSlider.SetActive(false);
@@ -46,7 +46,7 @@ public class Result : MonoBehaviour
 
     private void ResultText()
     {
-        float foundExtraPercent = 100 / extraWordsCount * chatInputManager.foundExtraWordsCount; 
+        float foundExtraPercent = 100 / extraWordsCount * checkAndAnswer.foundExtraWordsCount; 
 
         if (IsInRange(foundExtraPercent, 0f, 33f))
         {
@@ -77,7 +77,7 @@ public class Result : MonoBehaviour
         resultSlider.SetActive(true);
 
         resultSlider.GetComponent<Slider>().maxValue = extraWordsCount + essentialWordsCount;
-        resultSlider.GetComponent<Slider>().value = chatInputManager.foundExtraWordsCount + essentialWordsCount;
+        resultSlider.GetComponent<Slider>().value = checkAndAnswer.foundExtraWordsCount + essentialWordsCount;
     }
 
     bool IsInRange(float value, float min, float max)
