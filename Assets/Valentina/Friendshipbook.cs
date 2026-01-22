@@ -27,7 +27,7 @@ public class Friendshipbook : MonoBehaviour
         { 
             if (bookPuzzle.activeSelf) { bookPuzzle.SetActive(false); blackScreen.SetActive(false); } else { bookPuzzle.SetActive(true); blackScreen.SetActive(true); }
         }
-        else { Debug.Log("Pick up the Friendshipbook first!"); }
+        else { Debug.Log("Pick up the Friendshipbook first!"); ShowInfoText(); }
     }
     public void ShowInfoText()
     {

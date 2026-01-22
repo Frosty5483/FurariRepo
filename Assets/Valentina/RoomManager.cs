@@ -6,6 +6,7 @@ public class RoomManager : MonoBehaviour
 {
     public List<GameObject> roomlist;
     public int roomIndex = 0;
+    [SerializeField] private GameObject menu;
 
     public List<bool> RoomCompletion;
 
@@ -43,5 +44,14 @@ public class RoomManager : MonoBehaviour
             roomIndex++;
             RoomUpdater();
         }
+    }
+    public void Menu()
+    {
+        if (menu.activeSelf) menu.SetActive(false);
+        else menu.SetActive(true);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
