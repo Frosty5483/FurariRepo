@@ -54,7 +54,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             { rectTransform.SetParent(FSBParent); rectTransform.localPosition = fsbposition; EditText(new Vector2(260f, 0), 37); }
         }
         bool isFilled = StammbaumIsFull();
-        if (isFilled) { bool isRight = Evaluation(); Debug.Log("You Solution is " + isRight); RoomManager roomManager = FindFirstObjectByType<RoomManager>(); roomManager.RoomCompleted(0); }
+        if (isFilled) { bool isRight = Evaluation(); Debug.Log("You Solution is " + isRight); if (isRight) { RoomManager roomManager = FindFirstObjectByType<RoomManager>(); roomManager.RoomCompleted(0); } }
     }
     private void EditText(Vector2 position, int fontsize)
     {
@@ -133,7 +133,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     }
     private bool Evaluation()
     {
-        Debug.Log("Checking if your solution is right...");
+
         foreach (GameObject field in fsbScript.stammbaumFields)
         {
             if (field.transform.GetChild(0).name != fsbScript.fsbPhotos[fsbScript.stammbaumFields.IndexOf(field)].name)

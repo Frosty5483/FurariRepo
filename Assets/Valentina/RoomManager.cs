@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -14,9 +13,16 @@ public class RoomManager : MonoBehaviour
     {
         RoomUpdater();
     }
-    public void Door(int a)
+    void Update()
     {
-        switch (a)
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Menu();
+        }
+    }
+    public void Door(int index)
+    {
+        switch (index)
         {
             case 0:
                 if (RoomCompletion[roomIndex] == true) roomIndex++;
