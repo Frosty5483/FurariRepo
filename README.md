@@ -13,9 +13,6 @@ Nutzungsanleitung:
 7. (Chat)
 Eingabe erfolt durch Maus und Tastatur.
 
-Screenshot:
-<img width="1877" height="1253" alt="Furari_Start" src="https://github.com/user-attachments/assets/b55ccc81-ee41-4f9c-8b54-c6238c429808" />
-
 Genaue Aufgabenverteilung:
 Michael:
 
@@ -24,10 +21,12 @@ Sina:
 
 Valentina:
 Raumsteuerung (Tür-Buttons zum Weiterkommen, bools wenn Puzzles erledigt sind, kleines Pause-Menu)
-Startanimation und Puzzles vom Start und Raum 1-3 (Namen & Geburtsdatum & E-mail von Ava eingeben, Instagram von Ava einsehen (das Scirpts für die Einagbefelder & Bildanzeige sind von Sina))
+Startanimation und Puzzles vom Start und Raum 1-3 (Namen & Geburtsdatum & E-mail von Ava eingeben, Instagram von Ava einsehen (die Scripts für die Einagbefelder & Bildanzeige sind von Sina))
 Wohnzimmerpuzzle (Bilder dem Stammbaum zuweisen)
 Alle Grafiken (Screenshots aus Sims 4 + Filter aus Photoshop)
 
+Screenshot:
+<img width="1877" height="1253" alt="Furari_Start" src="https://github.com/user-attachments/assets/b55ccc81-ee41-4f9c-8b54-c6238c429808" />
 
 Development:
 Version: Unity 6000.0.57f1
