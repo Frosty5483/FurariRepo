@@ -19,15 +19,15 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        ReturnFsbPosition();
-        ReturnFSBParent();
+        SaveFsbPosition();
+        SaveFSBParent();
         ReturnFSBScript();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         transform.localScale = new Vector3(scalefactor, scalefactor, 1f);
-        ReturnOrgPosition();
+        SaveOrgPosition();
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -63,7 +63,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         child.GetComponent<Text>().fontSize = 18;
     }
 
-    private Vector3 ReturnOrgPosition()
+    private Vector3 SaveOrgPosition()
     {
         return orgPosition = gameObject.GetComponent<RectTransform>().localPosition;
     }
@@ -106,11 +106,11 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         return inStammbaumField = x;
     }
-    private Vector3 ReturnFsbPosition()
+    private Vector3 SaveFsbPosition()
     {
         return fsbposition = rectTransform.localPosition;
     }
-    private Transform ReturnFSBParent()
+    private Transform SaveFSBParent()
     {
         return FSBParent = this.gameObject.transform.parent;
         
