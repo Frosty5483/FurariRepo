@@ -13,6 +13,7 @@ public class BigItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        
         isOver = true;
     }
 

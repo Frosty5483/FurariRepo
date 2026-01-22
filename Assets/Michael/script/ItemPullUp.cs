@@ -22,25 +22,15 @@ public class ItemPullUp : MonoBehaviour
         
     }
 
-    private void OnMouseOver()
+    public void ItemPull()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!getStuffedAnimalObj.activeInHierarchy && !getBirthdayCardObj.activeInHierarchy && !getSongRecObj.activeInHierarchy)
         {
-            if (IsMouseOverUI()) return;
-
-            if (!getStuffedAnimalObj.activeInHierarchy && !getBirthdayCardObj.activeInHierarchy && !getSongRecObj.activeInHierarchy)
-            {
-                ResetRecordingUI();
-                bigImag.gameObject.SetActive(true);
-                bigImag.gameObject.GetComponent<BigItem>().EnableDelayedInteraction();
-                gameObject.SetActive(false);
-            }
+            ResetRecordingUI();
+            bigImag.gameObject.SetActive(true);
+            bigImag.gameObject.GetComponent<BigItem>().EnableDelayedInteraction();
+            gameObject.SetActive(false);
         }
-    }
-
-    public bool IsMouseOverUI()
-    {
-        return EventSystem.current.IsPointerOverGameObject();
     }
 
     public void ResetRecordingUI()
