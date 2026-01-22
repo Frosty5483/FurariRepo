@@ -17,6 +17,9 @@ Genaue Aufgabenverteilung:
 Michael:
 
 Sina:
+String abgleicher für die Rätsel
+Image Shower, für Fotos an der Wand usw.
+Chat zum sammel von informationen (Informationen werden mit Liste abgeglichen, Score basieren auf der Menge an gefundenen Wörtern errechnet, Attachments können, erst nachdem finden, geschickt werden und wenn man alle hat, öffnet sich die 4. Tür)
 
 
 Valentina:
