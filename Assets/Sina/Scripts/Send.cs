@@ -26,7 +26,7 @@ public class Send : MonoBehaviour
     {
         GameObject newMessage = Instantiate(message, chatField.transform);
         newMessage.GetComponent<TextMeshProUGUI>().text = attachments.attachmentTextObjects[index].GetComponent<TextMeshProUGUI>().text;
-        attachments.attachmentTextObjects[index].SetActive(false);
+        Destroy(attachments.attachmentTextObjects[index]);
         attachments.AttachmentAnswer();
     }
 

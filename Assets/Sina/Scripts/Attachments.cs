@@ -64,7 +64,7 @@ public class Attachments : MonoBehaviour
         }
         else
         {
-            attachmentsSent++;
+            attachmentsSent ++;
             checkAndAnswer.Answer(4);
         }
     }
