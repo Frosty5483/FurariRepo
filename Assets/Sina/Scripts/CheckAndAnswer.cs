@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckAndAnswer : MonoBehaviour
 {
@@ -16,10 +17,8 @@ public class CheckAndAnswer : MonoBehaviour
 
 
     [Header("Answers")]
-    [SerializeField] private GameObject essentialAnswer;
-    public GameObject extraAnswer;
-    [SerializeField] private GameObject wrongAnswer;
-    [SerializeField] private GameObject foundAnswer;
+    public GameObject answerObject;
+    [SerializeField] private List<string> answerChoice;
     [SerializeField] private GameObject chatField;
     private float responseTime = 0.7f;
 
@@ -30,13 +29,13 @@ public class CheckAndAnswer : MonoBehaviour
 
         if (essentialWords.Contains(message))
         {
-            Answer(essentialAnswer);
+            Answer(0);
             ListUpdate(message, essentialWords);
             Debug.Log("Essential Words: " + essentialWords.Count);
         }
         else if (extraWords.Contains(message))
         {
-            Answer(extraAnswer); 
+            Answer(1); 
             ListUpdate(message, extraWords);
             foundExtraWordsCount++;
             Debug.Log("Extra Words: " + extraWords.Count);
@@ -44,12 +43,12 @@ public class CheckAndAnswer : MonoBehaviour
         }
         else if (foundWords.Contains(message))
         {
-            Answer(foundAnswer);
+            Answer(2);
         }
         else
         {
-            Answer(wrongAnswer);
-        }
+            Answer(3);
+        }   
     }
 
     private void ListUpdate(string message, List<string> wordType)
@@ -58,8 +57,9 @@ public class CheckAndAnswer : MonoBehaviour
         wordType.Remove(message);
     }
 
-    public void Answer(GameObject Answer)
+    public void Answer(int answerChoiceIndex)
     {
-        Instantiate(Answer, chatField.transform);
+        GameObject answer = Instantiate(answerObject, chatField.transform);
+        answer.GetComponent<Text>().text = answerChoice[answerChoiceIndex];
     }
 }

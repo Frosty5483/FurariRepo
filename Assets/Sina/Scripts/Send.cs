@@ -26,8 +26,8 @@ public class Send : MonoBehaviour
     {
         GameObject newMessage = Instantiate(message, chatField.transform);
         newMessage.GetComponent<TextMeshProUGUI>().text = attachments.attachmentTextObjects[index].GetComponent<TextMeshProUGUI>().text;
-        checkAndAnswer.Answer(checkAndAnswer.extraAnswer);
         attachments.attachmentTextObjects[index].SetActive(false);
+        attachments.AttachmentAnswer();
     }
 
 
