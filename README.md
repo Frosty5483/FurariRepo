@@ -8,18 +8,16 @@ Nutzungsanleitung:
 2. Im ersten Raum "Foyer" muss man sich die Bilder auf der Wand anschauen, um das Geburtsdatum von der Person rauszufinden. Man kommt weiter, indem man die richtige Lösung ins eingabefeld eintippt und die Enter-Taste drückt.. <details><summary>Lösung:</summary>**(27.06.2003)**</details>
 3. Im zweiten Raum "Livingroom" muss man das Freundschaftsbuch aufheben, durchblättern und die Fotos richtig im Stammbaum einordnen. Wenn die Lösung stimmt, kommt man bei Mausklick auf die Tür in den nächtsen Raum.
 4. Im dritten Raum "Office" klickt man auf das Bild über den Schreibtisch, liest die Email-Adresse vom Lebenslauf ab, und tippt diese in das Eingabe-Feld ein. <details><summary>Lösung:</summary>**(ava.smith03@gmail.com)**</details>
-5. Im vierten Raum "Bedroom" ...
-6. Im fünften Raum "Kitchen" ...
-7. (Chat)
-Eingabe erfolt durch Maus und Tastatur.
+5. Im vierten Raum "Bedroom" muss man mit der Taste "R" einen Audiorecorder herausholen und einen Teddybären, eine Geburtstagskarte und eine Schallplatte aufnehmen, welche man dann dem Chat geben muss. Dieser öffnet einem dann die Türe.
+6. Im fünften Raum "Kitchen" kann man über eine Karte die Adresse von Ava herausfinden. Wenn man auf den richtigen Ort klickt, gibt das Spiel einem die option das hacken zu vollenden.
 
 Genaue Aufgabenverteilung:
 Michael:
 
 Sina:
 String abgleicher für die Rätsel
-Image Shower, für Fotos an der Wand usw.
-Chat zum sammel von informationen (Informationen werden mit Liste abgeglichen, Score basieren auf der Menge an gefundenen Wörtern errechnet, Attachments können, erst nachdem finden, geschickt werden und wenn man alle hat, öffnet sich die 4. Tür)
+Image Shower, für Fotos an der Wand usw. 
+Chat zum Sammeln von Informationen (Informationen werden mit Liste abgeglichen, Score basieren auf der Menge an gefundenen Wörtern/Attachments errechnet, Attachments können, erst nachdem finden, geschickt werden und wenn man alle hat öffnet sich die 4. Tür)
 
 
 Valentina:
