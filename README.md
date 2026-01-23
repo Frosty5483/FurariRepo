@@ -34,6 +34,10 @@ Screenshot:
 Playthrough:
 Link in teams
 
+oder hier:
+
+[[Playthrough Video]](Furari_Playthrough.mp4)
+
 Development:
 Version: Unity 6000.0.57f1
 Programmiersprache: C#
