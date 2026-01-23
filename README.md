@@ -12,7 +12,9 @@ Nutzungsanleitung:
 6. Im fünften Raum "Kitchen" kann man über eine Karte die Adresse von Ava herausfinden. Wenn man auf den richtigen Ort klickt, gibt das Spiel einem die option das hacken zu vollenden.
 
 Genaue Aufgabenverteilung:
+
 Michael:
+AudioRecorder + item show System (item show, audio recorder show, audiorecorder) für das Rätsel bei dem man gewisse Audio aufnehmen muss und dann später zusammenfügen. Map system mit map show, zoom, und drag mit Mittelklick. Für das Rätsel wo man die Adresse herausfinden muss.
 
 Sina:
 String abgleicher für die Rätsel
